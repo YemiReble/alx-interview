@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """ A function that calculate the minimum
 operation of a given task
 """
