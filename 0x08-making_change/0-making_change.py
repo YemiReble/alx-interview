@@ -13,14 +13,17 @@ def makeChange(coins, total):
       The fewest number of coins needed to make the given amount, or -1 if the
       amount cannot be made.
     """
+
     table = [float('inf')] * (total + 1)
 
     table[0] = 0
-    table[1] = 1
 
-    for i in range(2, total + 1):
+    for i in range(1, total + 1):
         for coin in coins:
             if i - coin >= 0:
                 table[i] = min(table[i], table[i - coin] + 1)
+
+    if table[total] == float('inf'):
+        return -1
 
     return table[total]
