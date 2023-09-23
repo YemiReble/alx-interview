@@ -13,6 +13,9 @@ def makeChange(coins, total):
       The fewest number of coins needed to make the given amount, or -1 if the
       amount cannot be made.
     """
+    
+    if total < 0:
+        return 0
 
     table = [float('inf')] * (total + 1)
 
