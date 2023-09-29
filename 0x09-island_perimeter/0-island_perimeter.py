@@ -12,13 +12,14 @@ def check_val(x):
         return 1
     return 0
 
+
 def island_perimeter(grid):
     """ Calculates the perimeter of the island by traversing
         the grid and checking the values of each cell.
     """
     row = len(grid)
     col = len(grid[0])
-    assert (1 <= row and col <= 100), "row and col must be between 1 and 100"
+    assert (1 <= row and col <= 100), "grid must be between 1 and 100"
 
     x = 0
     for i in range(row):
