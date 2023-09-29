@@ -2,11 +2,11 @@
 """
 0-main
 """
-from test import island_perimeter
+# from tests import island_perimeter
 # from island import island_perimeter
 
 
-# island_perimeter = __import__('0-island_perimeter').island_perimeter
+island_perimeter = __import__('0-island_perimeter').island_perimeter
 
 if __name__ == "__main__":
     grid = [

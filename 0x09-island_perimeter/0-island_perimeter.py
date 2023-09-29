@@ -4,29 +4,42 @@ Island Perimeter
 """
 
 
-def island_perimeter(grid):
-    """Calculates the perimeter of the island described in grid.
-
-    Args:
-        grid: A list of lists of integers, where 0 represents
-            water and 1 represents land.
-
-    Returns:
-        The perimeter of the island.
+def check_val(x):
+    """ Checks if the input value is 0 or 1 and returns
+        1 if it is 0, 0 if it is 1, or 1 if it is not 0 or 1.
     """
+    if x == 0:
+        return 1
+    return 0
 
-    perimeter = 0
-    for i in range(len(grid)):
-        for j in range(len(grid[0])):
+def island_perimeter(grid):
+    """ Calculates the perimeter of the island by traversing
+        the grid and checking the values of each cell.
+    """
+    row = len(grid)
+    col = len(grid[0])
+    assert (1 <= row and col <= 100), "row and col must be between 1 and 100"
+
+    x = 0
+    for i in range(row):
+        for j in range(col):
             if grid[i][j] == 1:
-                # Check if the cell is on the edge of the grid.
-                if i == 0 or i == len(grid) - 1 or j == 0 or \
-                        j == len(grid[0]) - 1:
-                    perimeter += 4
+                if i-1 < 0:
+                    x += 1
                 else:
-                    # Check if the cell is adjacent to any water cells.
-                    if grid[i - 1][j] == 0 or grid[i + 1][j] == 0 or \
-                            grid[i][j - 1] == 0 or grid[i][j + 1] == 0:
-                        perimeter += 1
+                    x += check_val(grid[i-1][j])
+                if j-1 < 0:
+                    x += 1
+                else:
+                    x += check_val(grid[i][j-1])
 
-    return perimeter
+                try:
+                    x += check_val(grid[i+1][j])
+                except IndexError:
+                    x += 1
+                try:
+                    x += check_val(grid[i][j+1])
+                except IndexError:
+                    x += 1
+
+    return x
